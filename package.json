@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mongoose": "^4.9.6",
+    "node-fetch": "^1.6.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
