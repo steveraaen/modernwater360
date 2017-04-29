@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Form from './Form.js'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: "",
+            results: ""
+        };
+
+        this.setTerm = this.setTerm.bind(this);
+    }
+      setTerm(term) {
+    this.setState({
+      searchTerm: term
+    });
   }
+
+
+    render() {
+        return (<div className="App" >
+          <div className="App-header">
+<h2>RCBTravel</h2>
+</div>
+<p className="App-intro">
+<code>src/App.js</code>
+</p>
+<Form />
+</div>
+        );
+    }
 }
 
 export default App;

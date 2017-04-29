@@ -18,9 +18,6 @@ var PlaceSchema = new Schema({
     geohash: {
         type: String
     },
-    mapURL: {
-        type: String
-    },
     confidence: {
         type: Number
     },

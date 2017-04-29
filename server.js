@@ -4,7 +4,6 @@ var mongoose = require("mongoose");
 var fetch = require("node-fetch");
 var Place = require("./models/Place.js");
 
-
 var app = express();
 mongoose.Promise = Promise;
 
@@ -17,8 +16,7 @@ db.once("open", function() {
     console.log("Mongoose connection successful.");
 });
 
-
-    var location = "Dax";
+    var location = "o'cebreiro";
     const geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
     const queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
 
@@ -27,13 +25,11 @@ db.once("open", function() {
             return res.json();
         }).then(function(json) {
 
-            console.log(json.results.length);
-       
-
 for(let i = 0; i < json.results.length; i++){
+	console.log(json.results[0])
 Place.create({
         formatted: json.results[i].formatted,
-        type: json.results[i].components.type,
+        placeType: json.results[i].components._type,
         country: json.results[i].components.country,
         mapURL: json.results[i].annotations.OSM.url,
         geohash: json.results[i].annotations.geohash,
@@ -43,7 +39,7 @@ Place.create({
 
 }, function (err, small) {
   if (err) return handleError(err);
-  // saved!
+
 });
 }
  });
